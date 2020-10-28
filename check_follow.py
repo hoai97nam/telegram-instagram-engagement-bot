@@ -6,16 +6,20 @@ import pprint
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 # sign in 
-API = InstagramAPI("11ndc", "nguyenhnam")
+API = InstagramAPI("tnt12dck", "nguyenhnam")
 API.login()
 #get user id
-usrname='tnt12dck'
-API.searchUsername(usrname)
-usr_id=API.LastJson['user']['pk']
-#get user followings
-API.getUserFollowers(usr_id)
-fl=API.LastJson['users']
+
+# usrname='tnt12dck'
+# API.searchUsername(usrname)
+# usr_id=API.LastJson['user']['pk']
+# #get user followings
+# API.getUserFollowers(usr_id)
+# fl=API.LastJson['users']
+# print(API.LastJson['users'][0]['username'])
+#----------------------------------------------------- testing block
 #put result in list
+'''
 k=1
 list_following=set()
 list_following_full=[]
@@ -24,17 +28,29 @@ for i in fl:
     list_following.add(i['username'])
     list_following_full.append(str(i))
     k+=1
-
-print(list_following_full[0]+"\n")
-print(list_following_full[1]+"\n")
-print(list_following_full[-1])
+print(type(fl))    
+print(fl[0]['username'])
+#--------------------------------------------------------
 '''
-def check_follow_yet(list1):
-    for i in list1:
+def get_latest_follower(list_1):
+    latest_follower_list=[]
+    for i in list_1:
         API.searchUsername(i)
-        usr_id=API.LastJson['user']['pk']
+        # print(API.LastJson['user']['pk'])
+        uid=API.LastJson['user']['pk']
         #get user followings
-        API.getUserFollowers(usr_id)
-        fl=API.LastJson['users']
+        API.getUserFollowers(uid)
+        latest_follower_list.append(API.LastJson['users'][0]['username'])
+    return latest_follower_list
 
-'''
+# list 1 is target user given to user who call '/list' command
+def check_follow_yet(list1): 
+    tmp = get_latest_follower(list1)
+    print(tmp)
+    tmp=set(tmp)
+    if len(tmp) == 1:
+        print('acceptable')
+    else:   
+        print('inacceptable') 
+
+check_follow_yet(['ameemee_m','ameemee_m','ameemee_m'])
