@@ -43,14 +43,14 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 logger = logging.getLogger(__name__)
 
 
-BOT_TOKEN = "TOKEN"
+BOT_TOKEN = "1098222229:AAE27CLsIN1xPwoDcjrBbz-z34lualgzbB4"
 
 # group chat id (integer). This is the group chat that you want your bot to participate in.
-GROUPCHATID = 1234567890
+GROUPCHATID = -1001192378669
 
 # Instagram usernames for checking if valid unsernames
-IG_USERNAME = 'user'
-IG_PASSWORD = 'pass'
+IG_USERNAME = 'nhnam97'
+IG_PASSWORD = 'nguyennam'
 
 API = InstagramAPI(IG_USERNAME, IG_PASSWORD)
 

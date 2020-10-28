@@ -5,7 +5,7 @@ import requests
 import pprint
 
 
-API = InstagramAPI("USER", "PASS")
+API = InstagramAPI("11ndc", "nguyenhnam")
 API.login()
 
 
